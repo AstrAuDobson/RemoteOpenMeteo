@@ -1,3 +1,4 @@
+!!! Rendez-vous dans la section wiki pour obtenir tous les détails de fabrication et de mise en service. !!!
 
 # ROM : Remote Open Meteo
 Station météo DIY sur base arduino avec driver ASCOM.<br />
@@ -15,7 +16,9 @@ Il es possible de réaliser la station de deux manières :
 ![ROM_V1](https://github.com/AstrAuDobson/RemoteOpenMeteo/assets/108142120/f9571807-2685-4177-9dd3-9b9c772d425e)
 
 
-Rendez-vous dans la section wiki pour obtenir tous les détails de fabrication et de mise en service.
+![ROM_V1_bis](https://github.com/AstrAuDobson/RemoteOpenMeteo/assets/108142120/49c68718-3175-4298-add3-25a4d6c5be2e)
+
+
 
 
 
