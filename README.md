@@ -1,16 +1,19 @@
+
 # ROM : Remote Open Meteo
-Station météo DIY avec driver ASCOM<br />
-Deux modèles :
+Station météo DIY sur base arduino avec driver ASCOM.<br />
+
+La station vous permet d'obtenir les données de température, pression et d'humidité.
+
+Elle peut fonctionner de manière autonome via un écran oled ou être reliée en USB à un ordinateur et remonter les données pour exploitation dans les logiciels type N.I.N.A.
+
+Il est à noter que N.I.N.A inscrit les valeurs dans les entêtes des fichiers images, vous pourrez donc consulter à postériori les conditions de shoot de votre session.
+
+Il es possible de réaliser la station de deux manières :
 - ROM V1 : BME280 (coût estimé environ 30€)
-- ROM V1 : BMP280 + DHT11 (coût estimé environ 15€)
+- ROM V1 : BMP280 + DHT (coût estimé environ 15€)
 
-# Firmware :
-Dans votre Arduino IDE, installez la librairie "ROM_V1_LIB.zip" via l'installation de librairies ZIP
-![Arduino_Install_Lib](https://github.com/Juani005999/ROM_DEV/assets/109244995/0feda781-852f-46a7-a6fe-2ad0d3361f93)
 
-Pour utiliser la librairie, sélectionnez votre board, puis ouvrez les exemples et sélectionnez le sketch correspondant à votre modèle
-![Arduino_Use_Lib](https://github.com/Juani005999/ROM_DEV/assets/109244995/5e8c41fe-f3c6-49fb-8bb1-e2db27dd1c7c)
+La 
 
-# Driver ASCOM
-Lancez l'installeur "Remote Open Meteo Setup.exe" pour installer le driver ASCOM sur votre poste.<br />
-Une fois l'installation effectuée, vous pourrez utiliser le module ROM dans vos applications habituelles.
+
+
