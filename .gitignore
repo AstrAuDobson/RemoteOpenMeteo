@@ -1,0 +1,14 @@
+﻿################################################################################
+# Ce fichier .gitignore a été automatiquement créé par Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/STL/Case_for_Weemos_D1_mini_and_sensor_4494567
+/STL/ROM_V1/Archives
+/STL/Wemos_D1_Mini_Sensor_Enclosures_4445065
+/STL/body_1_button_v12.f3d
+/STL/Case_for_Weemos_D1_mini_and_sensor_4494567.zip
+/STL/Wemos_D1_Mini_Sensor_Enclosures_4445065.zip
+/ROM ASCOM Driver/ASCOM.RemoteOpenMeteo.ObservingConditions/.vs/ASCOM.RemoteOpenMeteo.ObservingConditions
+/ROM ASCOM Driver/ASCOM.RemoteOpenMeteo.ObservingConditions/bin
+/ROM ASCOM Driver/ASCOM.RemoteOpenMeteo.ObservingConditions/obj
