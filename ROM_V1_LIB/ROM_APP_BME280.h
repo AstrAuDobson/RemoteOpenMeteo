@@ -2,7 +2,7 @@
 ///
 /// Projet          : ROM - Remote Open Météo
 /// Auteur          : Le Zav' & Juanito del Pepito
-/// Version         : BETA 0.4.2.1
+/// Version         : BETA 0.6.0.2
 /// Date            : 14/05/2023
 /// Description     : Station météo Open source pour téléscope
 ///                   *** Mode SENSOR_BME280 :
@@ -38,6 +38,5 @@ private:
   Adafruit_BME280 _bme280;
 
   // Champs internes
-  int _oledI2cAddress;
   int _bme280I2cAddress;
 };

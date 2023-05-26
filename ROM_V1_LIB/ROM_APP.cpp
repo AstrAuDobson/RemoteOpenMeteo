@@ -55,6 +55,22 @@ void ROM_APP::ReadEnvironment()
 }
 
 /// <summary>
+/// Mise à jour du point de rosée à partir de T° et de H
+/// </summary>
+void ROM_APP::UpdateDewPoint()
+{
+  double a = 17.271;
+  double b = 237.7;
+  if (!isnan(_temperature) && !isnan(_humidity))
+  {
+    double temp = (a * _temperature) / (b + _temperature) + log(_humidity * 0.01);
+    _dewPoint = (b * temp) / (a - temp);
+  }
+  else
+    _dewPoint = NAN;
+}
+
+/// <summary>
 /// Affichage des conditions d'environnement
 /// </summary>
 void ROM_APP::DisplayMesure()
@@ -154,25 +170,32 @@ void ROM_APP::DoCommand(String command)
     reponse = "OK";
   }
   // Demande de T°
-  else if (command.indexOf("[GET]T") != -1)
+  else if (command.indexOf("[GET]TA") != -1)
   {
-    Serial.print(F("[GET]T:"));
+    Serial.print(F("[GET]TA:"));
     Serial.println(String(_temperature, 2));
-    reponse = "[GET]T:" + String(_temperature, 2);
+    reponse = "[GET]TA:" + String(_temperature, 2);
   }
   // Demande de Pression atmosphérique
-  else if (command.indexOf("[GET]P") != -1)
+  else if (command.indexOf("[GET]PA") != -1)
   {
-    Serial.print(F("[GET]P:"));
+    Serial.print(F("[GET]PA:"));
     Serial.println(String(_pression, 2));
-    reponse = "[GET]P:" + String(_pression, 2);
+    reponse = "[GET]PA:" + String(_pression, 2);
   }
   // Demande d'humidité
-  else if (command.indexOf("[GET]H") != -1)
+  else if (command.indexOf("[GET]TH") != -1)
   {
-    Serial.print(F("[GET]H:"));
+    Serial.print(F("[GET]TH:"));
     Serial.println(String(_humidity, 2));
-    reponse = "[GET]H:" + String(_humidity, 2);
+    reponse = "[GET]TH:" + String(_humidity, 2);
+  }
+  // Demande du Point de rosée
+  else if (command.indexOf("[GET]DP") != -1)
+  {
+      Serial.print(F("[GET]DP:"));
+      Serial.println(String(_dewPoint, 2));
+      reponse = "[GET]DP:" + String(_dewPoint, 2);
   }
   if (_modeDebug)
   {

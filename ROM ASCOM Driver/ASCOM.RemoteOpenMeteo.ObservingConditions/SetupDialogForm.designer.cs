@@ -117,7 +117,7 @@ namespace ASCOM.RemoteOpenMeteo
             this.labelVersion.Name = "labelVersion";
             this.labelVersion.Size = new System.Drawing.Size(309, 18);
             this.labelVersion.TabIndex = 8;
-            this.labelVersion.Text = "Version BETA 6.6.0.1";
+            this.labelVersion.Text = "Version";
             // 
             // labelAuthor
             // 

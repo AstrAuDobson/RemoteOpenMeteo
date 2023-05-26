@@ -2,7 +2,7 @@
 ///
 /// Projet          : ROM - Remote Open Météo
 /// Auteur          : Le Zav' & Juanito del Pepito
-/// Version         : BETA 0.4.2.1
+/// Version         : BETA 0.6.0.2
 /// Date            : 14/05/2023
 /// Description     : Station météo Open source pour téléscope
 ///                   *** Mode SENSOR_BME280 :
@@ -58,6 +58,7 @@ public:
 
 protected:
   void DisplaySplashApp();
+  void UpdateDewPoint();
 
   // Initialisation des objets internes
   Adafruit_SSD1306 _display = Adafruit_SSD1306(OLED_SCREEN_WIDTH, OLED_SCREEN_HEIGHT, &Wire, OLED_RESET);
@@ -66,7 +67,9 @@ protected:
   float _pression = NAN;                    // Pression atmosphérique mesurée sur le BME
   float _temperature = NAN;                 // Température mesurée sur le BME
   float _humidity = NAN;                    // Humidité mesurée sur le BME
+  float	_dewPoint = NAN;					// Point de rosée calculée à partir de la T° et du taux d'Humidité
   bool  _displayOn = true;                  // Affichage en mode Standby : On / Off
+  int	_oledI2cAddress;					// Adresse de l'écran OLED sur le bus I2C
 
   // Variables pour chronos internes
   long  _chronoMesureEnv;                   // Chrono sur mesure des variables d'environnement

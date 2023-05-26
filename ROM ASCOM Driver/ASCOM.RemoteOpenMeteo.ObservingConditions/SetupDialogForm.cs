@@ -66,6 +66,8 @@ namespace ASCOM.RemoteOpenMeteo
             groupBoxParametres.Text = Resources.ParametresDuPeripheriqueROM;
             labelPortSerie.Text = Resources.PortSerie;
             chkTrace.Text = Resources.ModeTraceActive;
+            Version version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
+            labelVersion.Text = $"Version BETA {version.Major}.{version.Minor}.{version.MajorRevision}.{version.MinorRevision}";
         }
 
         /// <summary>
@@ -94,7 +96,6 @@ namespace ASCOM.RemoteOpenMeteo
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void cmdCancel_Click(object sender, EventArgs e)
-
         {
             Close();
         }

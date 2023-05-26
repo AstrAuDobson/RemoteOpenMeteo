@@ -52,6 +52,7 @@ void ROM_APP_BMP280_DHT::ReadEnvironment()
     _temperature = _bmp280.readTemperature();
     _pression = _bmp280.readPressure() / 100;
     _humidity = _dht->readHumidity();
+    UpdateDewPoint();
 
     if (_modeDebug)
     {
@@ -61,7 +62,8 @@ void ROM_APP_BMP280_DHT::ReadEnvironment()
       Serial.print(String(_pression, 2));
       Serial.print(F(" hPa / H:"));
       Serial.print(String(_humidity, 2));
-      Serial.println(F(" %"));
+      Serial.print(F(" % / DP:"));
+      Serial.println(String(_dewPoint, 2));
     }
 
     // Actualisation du chrono

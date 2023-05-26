@@ -551,7 +551,7 @@ namespace ASCOM.RemoteOpenMeteo
                 if (!string.IsNullOrEmpty(retour) && retour.ToUpper().StartsWith("[GET]") && retour.Length > 7)
                 {
                     // On tryParse la valeur de retour
-                    if (double.TryParse(retour.Substring(7),
+                    if (double.TryParse(retour.Substring(8),
                         NumberStyles.Number | NumberStyles.AllowDecimalPoint | NumberStyles.AllowLeadingSign,
                         CultureInfo.InvariantCulture,
                         out double result))
@@ -610,8 +610,37 @@ namespace ASCOM.RemoteOpenMeteo
         {
             get
             {
-                LogMessage("DewPoint", "get - not implemented");
-                throw new PropertyNotImplementedException("DewPoint", false);
+                try
+                {
+                    Stopwatch sw = Stopwatch.StartNew();
+
+                    // Vérif de connexion et de présence d'un module ROM
+                    CheckConnected("DewPoint");
+
+                    // Envoi de la commande
+                    double? result = EnvoyerCommande("[GET]DP");
+#if DEBUG
+                    string resultLine = result.HasValue ? result.Value.ToString() : "NaN";
+                    Debug.WriteLine($"Point de rosée : {resultLine} en {sw.ElapsedMilliseconds} ms");
+#endif
+                    if (result.HasValue)
+                        return result.Value;
+
+                    // Pas de réponse valide
+                    throw new InvalidValueException();
+                }
+                catch (InvalidValueException)
+                {
+                    throw;
+                }
+                catch (Exception ex)
+                {
+                    LogMessage("Point de rosée", "Erreur : {0}", ex.Message);
+
+                    // Mise à jour du flag interne et throw de l'exception
+                    CloseConnection();
+                    throw new DriverException(ex.Message);
+                }
             }
         }
 
@@ -630,7 +659,7 @@ namespace ASCOM.RemoteOpenMeteo
                     CheckConnected("Humidité");
 
                     // Envoi de la commande
-                    double? result = EnvoyerCommande("[GET]H");
+                    double? result = EnvoyerCommande("[GET]TH");
 #if DEBUG
                     string resultLine = result.HasValue ? result.Value.ToString() : "NaN";
                     Debug.WriteLine($"Humidité : {resultLine} en {sw.ElapsedMilliseconds} ms");
@@ -671,7 +700,7 @@ namespace ASCOM.RemoteOpenMeteo
                     CheckConnected("Pression atmosphérique");
 
                     // Envoi de la commande
-                    double? result = EnvoyerCommande("[GET]P");
+                    double? result = EnvoyerCommande("[GET]PA");
 #if DEBUG
                     string resultLine = result.HasValue ? result.Value.ToString() : "NaN";
                     Debug.WriteLine($"Pression atmosphérique : {resultLine} en {sw.ElapsedMilliseconds} ms");
@@ -818,7 +847,7 @@ namespace ASCOM.RemoteOpenMeteo
                     CheckConnected("Temperature");
 
                     // Envoi de la commande
-                    double? result = EnvoyerCommande("[GET]T");
+                    double? result = EnvoyerCommande("[GET]TA");
 #if DEBUG
                     string resultLine = result.HasValue ? result.Value.ToString() : "NaN";
                     Debug.WriteLine($"Temperature : {resultLine} en {sw.ElapsedMilliseconds} ms");
